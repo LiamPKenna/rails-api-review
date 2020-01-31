@@ -1,12 +1,12 @@
 # _Rails API Review_
 
-#### _{Brief description of application}, 1/31/2020_
+#### _This is an API built to supply data to a previously built Quiz Application., 1/31/2020_
 
 #### By _**Liam Kenna**_
 
 ## Description
 
-_{This is a detailed description of your application. Its purpose and usage.  Give as much detail as needed to explain what the application does, and any other information you want users or other developers to have. }_
+_This is an API built to supply data to a previously built Quiz Application._
 
 ## Setup/Installation Requirements
 
