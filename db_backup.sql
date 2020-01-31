@@ -231,12 +231,12 @@ ALTER TABLE ONLY public.quizzes ALTER COLUMN id SET DEFAULT nextval('public.quiz
 --
 
 COPY public.answers (id, text, question_id, linked_card, is_finish, created_at, updated_at) FROM stdin;
-1	Work with scripts like Wordpress	3	\N	t	2020-01-31 22:05:38.875585	2020-01-31 22:05:38.875585
-2	Create code that runs in the browser	3	\N	t	2020-01-31 22:05:58.862796	2020-01-31 22:05:58.862796
-3	Create websites like AirBNB or Twitter	3	\N	t	2020-01-31 22:06:13.555176	2020-01-31 22:06:13.555176
-4	Create full stack apps with a single language	12	\N	t	2020-01-31 22:07:40.865021	2020-01-31 22:07:40.865021
-5	Use a clear and general purpose language	12	\N	t	2020-01-31 22:07:58.975951	2020-01-31 22:07:58.975951
-6	Create websites like AirBNB or Twitter	12	\N	t	2020-01-31 22:08:25.594295	2020-01-31 22:08:25.594295
+4	Create full stack apps with a single language	12	4	t	2020-01-31 22:07:40.865021	2020-01-31 22:28:31.651011
+5	Use a clear and general purpose language	12	5	t	2020-01-31 22:07:58.975951	2020-01-31 22:29:01.154023
+6	Create websites like AirBNB or Twitter	12	6	t	2020-01-31 22:08:25.594295	2020-01-31 22:29:22.952056
+1	Work with scripts like Wordpress	3	3	t	2020-01-31 22:05:38.875585	2020-01-31 22:30:12.631946
+2	Create code that runs in the browser	3	4	t	2020-01-31 22:05:58.862796	2020-01-31 22:30:44.819631
+3	Create websites like AirBNB or Twitter	3	6	t	2020-01-31 22:06:13.555176	2020-01-31 22:31:15.506125
 \.
 
 
@@ -274,13 +274,13 @@ COPY public.questions (id, text, quiz_id, is_binary, y_link, n_link, y_is_final,
 1	Do you want work for a big company?	1	t	6	7	f	f	2020-01-31 17:48:16.66202	2020-01-31 17:58:03.931805
 2	Do you want to learn a language with more rules (to prevent errors) rather than more flexibility?	1	t	4	10	f	f	2020-01-31 17:51:42.600145	2020-01-31 18:01:11.142914
 4	Do you want to make smartphone apps?	1	t	9	5	f	f	2020-01-31 17:52:34.798858	2020-01-31 18:03:59.887737
-5	Can you sell your soul to Microsoft?	1	t	\N	\N	t	t	2020-01-31 17:52:56.377779	2020-01-31 18:04:32.062394
 6	Are you excited about using a language with strict structures and syntax?	1	t	4	8	f	f	2020-01-31 17:53:26.246059	2020-01-31 18:06:16.896143
 8	Are you excited about working fast and flexible, even if it makes it harder to work for a big company?	1	t	10	4	f	f	2020-01-31 17:54:06.151207	2020-01-31 18:09:59.931306
 7	Are you excited about working fast, even if it leads to more errors?	1	t	10	2	f	f	2020-01-31 17:53:47.496371	2020-01-31 18:10:48.272765
-9	Are you mostly wanting to work on iOS apps?	1	t	\N	\N	t	t	2020-01-31 17:54:23.307385	2020-01-31 18:12:44.672643
 10	Are you more excited about building web apps than other types of programming?	1	t	3	11	f	f	2020-01-31 17:54:40.090294	2020-01-31 18:15:00.836512
-11	Do you dream of working in Big data?	1	t	\N	12	t	f	2020-01-31 17:55:04.079281	2020-01-31 18:16:13.499455
+11	Do you dream of working in Big data?	1	t	5	12	t	f	2020-01-31 17:55:04.079281	2020-01-31 22:18:16.897757
+5	Can you sell your soul to Microsoft?	1	t	2	1	t	t	2020-01-31 17:52:56.377779	2020-01-31 22:20:24.768635
+9	Are you mostly wanting to work on iOS apps?	1	t	7	1	t	t	2020-01-31 17:54:23.307385	2020-01-31 22:21:45.643069
 \.
 
 
