@@ -3,7 +3,8 @@ class AnswersController < ApplicationController
 
   # GET /answers
   def index
-    @answers = Answer.all
+    @question = Question.find(params[:question_id])
+    @answers = @question.answers
 
     render json: @answers
   end
