@@ -4,6 +4,7 @@ class CreateAnswers < ActiveRecord::Migration[5.2]
       t.string :text
       t.integer :question_id
       t.integer :linked_question
+      t.boolean :is_finish
 
       t.timestamps
     end
