@@ -1,6 +1,6 @@
 # _Rails API Review_
 
-#### _This is an API built to supply data to a previously built Quiz Application., 1/31/2020_
+#### _This is an API built to supply data to a previously built Quiz Application, January 31st 2020_
 
 #### By _**Liam Kenna**_
 
@@ -10,11 +10,15 @@ _This is an API built to supply data to a previously built Quiz Application._
 
 ## Setup/Installation Requirements
 
-* _This is a great place_
-* _to list setup instructions_
-* _in a simple_
-* _easy-to-understand_
-* _format_
+* _Clone to local machine_
+* _Verify that you are running postgresql locally_
+* _In project root folder:_
+  * _$ bundle install_
+  * _$ rake db:create_
+  * _$ rake db:migrate_
+  * _$ psql {YOUR FOLDER NAME HERE}_development < db_backup.sql_
+  * _$ rake db:test:prepare_
+  * _$ rails s_
 
 _{Leave nothing to chance! You want it to be easy for potential users, employers and collaborators to run your app. Do I need to run a server? How should I set up my databases? Is there other code this app depends on?}_
 
