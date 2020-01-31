@@ -11,23 +11,41 @@ _This is an API built to supply data to a previously built Quiz Application._
 _The following routes are available:_
 
 Quiz Routes:
+```
+GET /quizzes/
+  -returns all available quizzes
 
-    GET /quizzes/
-      -returns all available quizzes
+GET /quizzes/random
+  -returns a single randomly selected quiz
 
-    GET /quizzes/random
-      -returns a single randomly selected quiz
+GET /quizzes/{quiz_id}
+  -returns a single quiz by {quiz_id}
 
-    GET /quizzes/{quiz_id}
-      -returns a single quiz by {quiz_id}
+POST /quizzes/
+  -creates a new quiz
+  -payload format:
+    {
+      "title": "title text",
+      "sub_title": "sub title text"
+    }
 
-  Question Routes:
+PATCH /quizzes/{quiz_id}
+  -updates a single quiz
+  -can be multiple or single parameters
+  -payload format:
+    {
+      "title": "title text",
+      "sub_title": "sub title text"
+    }
+```
+Question Routes:
+```
+GET /quizzes/{quiz_id}/questions
+  -returns all available questions
 
-      GET /quizzes/{quiz_id}/questions
-        -returns all available questions
-
-      GET /quizzes/{quiz_id}/questions/{question_id}
-        -returns a single question by {question_id}
+GET /quizzes/{quiz_id}/questions/{question_id}
+  -returns a single question by {question_id}
+```
 
 ## Setup/Installation Requirements
 
