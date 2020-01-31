@@ -459,7 +459,7 @@
         null,
         null,
         1,
-        0,
+        1,
         null,
         null,
         null,
@@ -490,7 +490,7 @@
         1,
         null,
         1,
-        0,
+        1,
         null,
         null,
         null,
@@ -569,8 +569,27 @@
         2,
         2,
         null
+      ],
+      "C:/Code/epi/ruby/rails/rails_api_review/spec/requests/quiz_route_spec.rb": [
+        1,
+        null,
+        null,
+        1,
+        null,
+        1,
+        1,
+        1,
+        1,
+        null,
+        null,
+        1,
+        1,
+        1,
+        null,
+        null,
+        null
       ]
     },
-    "timestamp": 1580497481
+    "timestamp": 1580498242
   }
 }
