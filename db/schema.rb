@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_01_31_163236) do
+ActiveRecord::Schema.define(version: 2020_01_31_185829) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -28,6 +28,7 @@ ActiveRecord::Schema.define(version: 2020_01_31_163236) do
     t.string "text"
     t.string "sub_text"
     t.string "img_src"
+    t.integer "quiz_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -51,4 +52,5 @@ ActiveRecord::Schema.define(version: 2020_01_31_163236) do
     t.datetime "updated_at", null: false
   end
 
+  add_foreign_key "finishes", "quizzes"
 end

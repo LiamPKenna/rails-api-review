@@ -4,6 +4,7 @@ class CreateFinishes < ActiveRecord::Migration[5.2]
       t.string :text
       t.string :sub_text
       t.string :img_src
+      t.integer :quiz_id
 
       t.timestamps
     end
