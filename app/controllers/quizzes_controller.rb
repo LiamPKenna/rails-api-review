@@ -41,7 +41,11 @@ class QuizzesController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_quiz
-      @quiz = Quiz.find(params[:id])
+      if params[:id] == 'random'
+        @quiz = Quiz.random
+      else
+        @quiz = Quiz.find(params[:id])
+      end
     end
 
     # Only allow a trusted parameter "white list" through.
