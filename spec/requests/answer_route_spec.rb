@@ -50,53 +50,49 @@ describe "question routes", :type => :request do
     expect(JSON.parse(response.body).length).to eq(2)
   end
 
-  # it 'returns unprocessable entity status when given invalid input' do
-  #   post "/quizzes/#{@quiz.id}/questions", params: {
-  #     :question => {
-  #       text: nil,
-  #       quiz_id: nil,
-  #       is_binary: true,
-  #     }
-  #   }
-  #   expect(response).to have_http_status(422)
-  # end
-  #
-  # it 'allows updating of a question' do
-  #   @question2 = Question.new({
-  #     text: "new test text",
-  #     quiz_id: @quiz.id,
-  #     is_binary: true,
-  #     y_link: 3,
-  #     n_link: 11,
-  #     y_is_final: false,
-  #     n_is_final: false,
-  #   })
-  #   @question2.save
-  #   patch "/quizzes/#{@quiz.id}/questions/#{@question2.id}", params: {
-  #     :question => {:text => 'updated'} }
-  #   get "/quizzes/#{@quiz.id}/questions/#{@question2.id}"
-  #   expect(JSON.parse(response.body)['text']).to eq('updated')
-  # end
-  #
-  # it 'returns unprocessable entity status when given invalid input' do
-  #   patch "/quizzes/#{@quiz.id}/questions/#{@question.id}", params: { :question => {:text => nil} }
-  #   expect(response).to have_http_status(422)
-  # end
-  #
-  # it 'allows deleting of a question' do
-  #   @question2 = Question.new({
-  #     text: "new test text",
-  #     quiz_id: @quiz.id,
-  #     is_binary: true,
-  #     y_link: 3,
-  #     n_link: 11,
-  #     y_is_final: false,
-  #     n_is_final: false,
-  #   })
-  #   @question2.save
-  #   delete "/quizzes/#{@quiz.id}/questions/#{@question2.id}"
-  #   get "/quizzes/#{@quiz.id}/questions"
-  #   expect(JSON.parse(response.body).length).to eq(1)
-  # end
+  it 'returns unprocessable entity status when given invalid input' do
+    post "#{@route}/answers", params: {
+      :answer => {
+        text: nil,
+        question_id: nil,
+        linked_card: nil,
+        is_finish: false,
+      }
+    }
+    expect(response).to have_http_status(422)
+  end
+
+  it 'allows updating of an answer' do
+    @answer2 = Answer.create!({
+      text: "test text",
+      question_id: @question.id,
+      linked_card: nil,
+      is_finish: false,
+    })
+    @answer2.save
+    patch "#{@route}/answers/#{@answer2.id}", params: {
+      :answer => {:text => 'updated'}
+    }
+    get "#{@route}/answers/#{@answer2.id}"
+    expect(JSON.parse(response.body)['text']).to eq('updated')
+  end
+
+  it 'returns unprocessable entity status when given invalid input' do
+    patch "#{@route}/answers/#{@answer.id}", params: { :answer => {:text => nil} }
+    expect(response).to have_http_status(422)
+  end
+
+  it 'allows deleting of an answer' do
+    @answer2 = Answer.create!({
+      text: "test text",
+      question_id: @question.id,
+      linked_card: nil,
+      is_finish: false,
+    })
+    @answer2.save
+    delete "#{@route}/answers/#{@answer2.id}"
+    get "#{@route}/answers"
+    expect(JSON.parse(response.body).length).to eq(1)
+  end
 
 end
