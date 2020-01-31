@@ -35,6 +35,11 @@ ActiveRecord::Schema.define(version: 2020_01_31_163236) do
   create_table "questions", force: :cascade do |t|
     t.string "text"
     t.integer "quiz_id"
+    t.boolean "is_binary"
+    t.integer "y_link"
+    t.integer "n_link"
+    t.boolean "y_is_final"
+    t.boolean "n_is_final"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
