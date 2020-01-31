@@ -34,9 +34,11 @@ PATCH /quizzes/{quiz_id}
   -can be multiple or single parameters
   -payload format:
     {
-      "title": "title text",
-      "sub_title": "sub title text"
+      ...same as POST route ...
     }
+
+DELETE /quizzes/{quiz_id}
+  -destroys a single quiz by {quiz_id}
 ```
 Question Routes:
 ```
@@ -45,6 +47,85 @@ GET /quizzes/{quiz_id}/questions
 
 GET /quizzes/{quiz_id}/questions/{question_id}
   -returns a single question by {question_id}
+
+POST /quizzes/{quiz_id}/questions
+  -creates a new question
+  -payload format:
+    {
+      "text": "question text",
+    	"is_binary": "false",  // (is this a yes/no question)
+    	"y_link": "{destination_number}", // (card to navigate to for a yes answer)
+    	"n_link": "{destination_number}", // (card to navigate to for a no answer)
+    	"y_is_final": "false", // (does a yes answer end the quiz)
+    	"n_is_final": "false" // (does a no answer end the quiz)
+    }
+
+PATCH /quizzes/{quiz_id}questions/{question_id}
+  -updates a single question
+  -can be multiple or single parameters
+  -payload format:
+    {
+      ...same as POST route ...
+    }
+
+DELETE /quizzes/{quiz_id}/questions/{question_id}
+  -destroys a single question by {question_id}
+```
+Finish Routes:
+```
+GET /quizzes/{quiz_id}/finishes
+  -returns all available finishes
+
+GET /quizzes/{quiz_id}/finishes/{finish_id}
+  -returns a single finish by {finish_id}
+
+POST /quizzes/{quiz_id}/finishes
+  -creates a new finish
+  -payload format:
+    {
+      "text": "finish text",
+      "sub_text": "Detail text for the specific finish.",
+      "img_src": "img/swift.png"
+    }
+
+PATCH /quizzes/{quiz_id}finishes/{finish_id}
+  -updates a single finish
+  -can be multiple or single parameters
+  -payload format:
+    {
+      ...same as POST route ...
+    }
+
+DELETE /quizzes/{quiz_id}/finishes/{finish_id}
+  -destroys a single finish by {finish_id}
+```
+Answer Routes:
+```
+GET /quizzes/{quiz_id}/questions/{question_id}/answers
+  -returns all available answers for a question
+
+GET /quizzes/{quiz_id}/questions/{question_id}/answers/{answer_id}
+  -returns a single answer by {answer_id}
+
+POST /quizzes/{quiz_id}/questions{question_id}/answers
+  -creates a new answer for a question
+  -payload format:
+    {
+      "text": "answer text",
+      "linked_card": "{destination_number}", // (card to navigate when answer is chosen)
+      "is_finish": "true" // (does selecting this answer go to a finish)
+    }
+
+PATCH /quizzes/{quiz_id}questions/{question_id}/answers/{answer_id}
+  -updates a single answer
+  -can be multiple or single parameters
+  -payload format:
+    {
+      ...same as POST route ...
+    }
+
+DELETE /quizzes/{quiz_id}/questions/{question_id}/answers/{answer_id}
+  -destroys a single answer by {answer_id}
 ```
 
 ## Setup/Installation Requirements
