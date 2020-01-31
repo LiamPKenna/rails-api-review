@@ -46,6 +46,6 @@ class FinishesController < ApplicationController
 
     # Only allow a trusted parameter "white list" through.
     def finish_params
-      params.require(:finish).permit(:text, :sub_text, :img_src)
+      params.require(:finish).permit(:text, :sub_text, :img_src, :quiz_id)
     end
 end
