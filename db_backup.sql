@@ -81,6 +81,7 @@ CREATE TABLE public.finishes (
     text character varying,
     sub_text character varying,
     img_src character varying,
+    quiz_id integer,
     created_at timestamp without time zone NOT NULL,
     updated_at timestamp without time zone NOT NULL
 );
@@ -230,6 +231,12 @@ ALTER TABLE ONLY public.quizzes ALTER COLUMN id SET DEFAULT nextval('public.quiz
 --
 
 COPY public.answers (id, text, question_id, linked_card, is_finish, created_at, updated_at) FROM stdin;
+1	Work with scripts like Wordpress	3	\N	t	2020-01-31 22:05:38.875585	2020-01-31 22:05:38.875585
+2	Create code that runs in the browser	3	\N	t	2020-01-31 22:05:58.862796	2020-01-31 22:05:58.862796
+3	Create websites like AirBNB or Twitter	3	\N	t	2020-01-31 22:06:13.555176	2020-01-31 22:06:13.555176
+4	Create full stack apps with a single language	12	\N	t	2020-01-31 22:07:40.865021	2020-01-31 22:07:40.865021
+5	Use a clear and general purpose language	12	\N	t	2020-01-31 22:07:58.975951	2020-01-31 22:07:58.975951
+6	Create websites like AirBNB or Twitter	12	\N	t	2020-01-31 22:08:25.594295	2020-01-31 22:08:25.594295
 \.
 
 
@@ -238,7 +245,7 @@ COPY public.answers (id, text, question_id, linked_card, is_finish, created_at, 
 --
 
 COPY public.ar_internal_metadata (key, value, created_at, updated_at) FROM stdin;
-environment	development	2020-01-31 17:46:48.234925	2020-01-31 17:46:48.234925
+environment	development	2020-01-31 19:03:14.853486	2020-01-31 19:03:14.853486
 \.
 
 
@@ -246,7 +253,14 @@ environment	development	2020-01-31 17:46:48.234925	2020-01-31 17:46:48.234925
 -- Data for Name: finishes; Type: TABLE DATA; Schema: public; Owner: lpk
 --
 
-COPY public.finishes (id, text, sub_text, img_src, created_at, updated_at) FROM stdin;
+COPY public.finishes (id, text, sub_text, img_src, quiz_id, created_at, updated_at) FROM stdin;
+1	should learn Java	It's a language that can be run 'anywhere' and is the language of Android.	img/java.png	1	2020-01-31 22:11:27.027135	2020-01-31 22:11:27.027135
+2	should learn C#	It's a language with many similarities to Java plus even more features.	img/c-sharp.png	1	2020-01-31 22:12:14.801283	2020-01-31 22:12:14.801283
+3	should learn PHP	It was all the rage in the 90's and still has many popular scripts.	img/php.png	1	2020-01-31 22:12:52.899496	2020-01-31 22:12:52.899496
+4	should learn JavaScript	It's run all over the place and is the native language of the web.	img/javascript.png	1	2020-01-31 22:13:43.191037	2020-01-31 22:13:43.191037
+5	should learn Python	It's a popular option for big data and science with an emphasis on readability.	img/python.png	1	2020-01-31 22:14:16.49856	2020-01-31 22:14:16.49856
+6	should learn Ruby	It is clean, readable and a powerful tool for building webpages and more.	img/ruby.png	1	2020-01-31 22:15:05.612194	2020-01-31 22:15:05.612194
+7	should learn Swift	It is Apple's newest language and the perfect tool for developing iOS apps.	img/swift.png	1	2020-01-31 22:15:42.618601	2020-01-31 22:15:42.618601
 \.
 
 
@@ -288,6 +302,7 @@ COPY public.schema_migrations (version) FROM stdin;
 20200131162104
 20200131162430
 20200131163236
+20200131185829
 \.
 
 
@@ -295,14 +310,14 @@ COPY public.schema_migrations (version) FROM stdin;
 -- Name: answers_id_seq; Type: SEQUENCE SET; Schema: public; Owner: lpk
 --
 
-SELECT pg_catalog.setval('public.answers_id_seq', 1, false);
+SELECT pg_catalog.setval('public.answers_id_seq', 6, true);
 
 
 --
 -- Name: finishes_id_seq; Type: SEQUENCE SET; Schema: public; Owner: lpk
 --
 
-SELECT pg_catalog.setval('public.finishes_id_seq', 1, false);
+SELECT pg_catalog.setval('public.finishes_id_seq', 7, true);
 
 
 --
@@ -365,6 +380,14 @@ ALTER TABLE ONLY public.quizzes
 
 ALTER TABLE ONLY public.schema_migrations
     ADD CONSTRAINT schema_migrations_pkey PRIMARY KEY (version);
+
+
+--
+-- Name: finishes fk_rails_6e31958eaf; Type: FK CONSTRAINT; Schema: public; Owner: lpk
+--
+
+ALTER TABLE ONLY public.finishes
+    ADD CONSTRAINT fk_rails_6e31958eaf FOREIGN KEY (quiz_id) REFERENCES public.quizzes(id);
 
 
 --
