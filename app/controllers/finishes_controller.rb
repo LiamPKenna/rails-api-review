@@ -18,7 +18,7 @@ class FinishesController < ApplicationController
     @finish = Finish.new(finish_params)
 
     if @finish.save
-      render json: @finish, status: :created, location: @finish
+      render json: @finish, status: :created
     else
       render json: @finish.errors, status: :unprocessable_entity
     end
