@@ -24,16 +24,22 @@ describe "question routes", :type => :request do
     expect(JSON.parse(response.body)['text']).to eq('test text')
   end
 
-  # it 'returns an array of all quizzes' do
-  #   get "/quizzes"
-  #   expect(JSON.parse(response.body).length).to eq(1)
-  # end
-  #
-  # it 'allows creation of a new quiz' do
-  #   post "/quizzes/", params: { :quiz => {title:"new test title", sub_title: "new test sub title"} }
-  #   get "/quizzes"
-  #   expect(JSON.parse(response.body).length).to eq(2)
-  # end
+  it 'returns an array of all questions for a given quiz' do
+    get "/quizzes/#{@quiz.id}/questions"
+    expect(JSON.parse(response.body).length).to eq(1)
+  end
+
+  it 'allows creation of a new question' do
+    post "/quizzes/#{@quiz.id}/questions", params: {
+      :question => {
+        text: "test text",
+        quiz_id: @quiz.id,
+        is_binary: true,
+      }
+    }
+    get "/quizzes/#{@quiz.id}/questions"
+    expect(JSON.parse(response.body).length).to eq(2)
+  end
   #
   # it 'returns unprocessable entity status when given invalid input' do
   #   post "/quizzes/", params: { :quiz => {:title => nil, :sub_title => nil} }
