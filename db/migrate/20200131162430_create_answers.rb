@@ -3,7 +3,7 @@ class CreateAnswers < ActiveRecord::Migration[5.2]
     create_table :answers do |t|
       t.string :text
       t.integer :question_id
-      t.integer :linked_question
+      t.integer :linked_card
       t.boolean :is_finish
 
       t.timestamps
