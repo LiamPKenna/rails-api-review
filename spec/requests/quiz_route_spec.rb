@@ -20,9 +20,14 @@ describe "quiz routes", :type => :request do
   end
 
   it 'allows creation of a new quiz' do
-    Quiz.create!({title:"new test title", sub_title: "new test sub title"})
+    post "/quizzes/", params: { :quiz => {title:"new test title", sub_title: "new test sub title"} }
     get "/quizzes"
     expect(JSON.parse(response.body).length).to eq(2)
+  end
+
+  it 'returns unprocessable entity status when given invalid input' do
+    post "/quizzes/", params: { :quiz => {:title => nil, :sub_title => nil} }
+    expect(response).to have_http_status(422)
   end
 
   it 'allows updating of a quiz' do
@@ -31,6 +36,11 @@ describe "quiz routes", :type => :request do
     patch "/quizzes/#{@quiz2.id}", params: { :quiz => {:title => 'updated'} }
     get "/quizzes/#{@quiz2.id}"
     expect(JSON.parse(response.body)['title']).to eq('updated')
+  end
+
+  it 'returns unprocessable entity status when given invalid input' do
+    patch "/quizzes/#{@quiz.id}", params: { :quiz => {:title => nil, :sub_title => nil} }
+    expect(response).to have_http_status(422)
   end
 
   it 'allows deleting of a quiz' do
