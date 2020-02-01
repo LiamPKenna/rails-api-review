@@ -1,12 +1,12 @@
 # _Rails API Review_
 
-#### _Rails API built to supply data to a previously built Quiz Application, January 31st 2020_
+#### _Rails API built to supply data to an existing Quiz Application, January 31st 2020_
 
 #### By _**Liam Kenna**_
 
 ## Description
 
-_This is an API built to supply data to a previously built Quiz Application._
+_This is an API constructed to supply data to an existing Quiz Application built to function with any flowchart style decision branching.  For demonstration purposes, the API is not currently restricted and will allow full CRUD accessibility to all users._
 
 _The following routes are available:_
 
