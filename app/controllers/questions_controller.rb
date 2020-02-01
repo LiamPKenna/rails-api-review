@@ -15,7 +15,9 @@ class QuestionsController < ApplicationController
 
   # POST /questions
   def create
-    @question = Question.new(question_params)
+    updated_params = question_params
+    updated_params[:quiz_id] = params[:quiz_id]
+    @question = Question.new(updated_params)
 
     if @question.save
       render json: @question, status: :created
@@ -46,6 +48,6 @@ class QuestionsController < ApplicationController
 
     # Only allow a trusted parameter "white list" through.
     def question_params
-      params.require(:question).permit(:text, :quiz_id, :is_binary, :y_link, :n_link, :y_is_final, :n_is_final)
+      params.require(:question).permit(:text, :is_binary, :y_link, :n_link, :y_is_final, :n_is_final)
     end
 end

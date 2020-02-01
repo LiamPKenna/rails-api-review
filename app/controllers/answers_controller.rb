@@ -16,7 +16,9 @@ class AnswersController < ApplicationController
 
   # POST /answers
   def create
-    @answer = Answer.new(answer_params)
+    updated_params = answer_params
+    updated_params[:question_id] = params[:question_id]
+    @answer = Answer.new(updated_params)
 
     if @answer.save
       render json: @answer, status: :created
@@ -47,6 +49,6 @@ class AnswersController < ApplicationController
 
     # Only allow a trusted parameter "white list" through.
     def answer_params
-      params.require(:answer).permit(:text, :question_id, :linked_card, :is_finish)
+      params.require(:answer).permit(:text, :linked_card, :is_finish)
     end
 end

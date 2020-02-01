@@ -15,7 +15,9 @@ class FinishesController < ApplicationController
 
   # POST /finishes
   def create
-    @finish = Finish.new(finish_params)
+    updated_params = finish_params
+    updated_params[:quiz_id] = params[:quiz_id]
+    @finish = Finish.new(updated_params)
 
     if @finish.save
       render json: @finish, status: :created
@@ -46,6 +48,6 @@ class FinishesController < ApplicationController
 
     # Only allow a trusted parameter "white list" through.
     def finish_params
-      params.require(:finish).permit(:text, :sub_text, :img_src, :quiz_id)
+      params.require(:finish).permit(:text, :sub_text, :img_src)
     end
 end
