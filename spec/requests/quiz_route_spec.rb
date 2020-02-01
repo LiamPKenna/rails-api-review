@@ -19,6 +19,11 @@ describe "quiz routes", :type => :request do
     expect(JSON.parse(response.body).length).to eq(1)
   end
 
+  it 'returns a single random quiz' do
+    get "/quizzes/random"
+    expect(JSON.parse(response.body)['title']).to eq('test title')
+  end
+
   it 'allows creation of a new quiz' do
     post "/quizzes/", params: { :quiz => {title:"new test title", sub_title: "new test sub title"} }
     get "/quizzes"
