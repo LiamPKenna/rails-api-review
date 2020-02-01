@@ -8,9 +8,9 @@
 
 _This is an API constructed to supply data to an existing Quiz Application built to function with any flowchart style decision branching.  For demonstration purposes, the API is not currently restricted and will allow full CRUD accessibility to all users._
 
-_The following routes are available:_
+#### The following routes are available:
 
-Quiz Routes:
+_Quiz Routes:_
 ```
 GET /quizzes/
   -returns all available quizzes
@@ -40,7 +40,7 @@ PATCH /quizzes/{quiz_id}
 DELETE /quizzes/{quiz_id}
   -destroys a single quiz by {quiz_id}
 ```
-Question Routes:
+_Question Routes:_
 ```
 GET /quizzes/{quiz_id}/questions
   -returns all available questions
@@ -71,7 +71,7 @@ PATCH /quizzes/{quiz_id}questions/{question_id}
 DELETE /quizzes/{quiz_id}/questions/{question_id}
   -destroys a single question by {question_id}
 ```
-Finish Routes:
+_Finish Routes:_
 ```
 GET /quizzes/{quiz_id}/finishes
   -returns all available finishes
@@ -99,7 +99,7 @@ PATCH /quizzes/{quiz_id}finishes/{finish_id}
 DELETE /quizzes/{quiz_id}/finishes/{finish_id}
   -destroys a single finish by {finish_id}
 ```
-Answer Routes:
+_Answer Routes:_
 ```
 GET /quizzes/{quiz_id}/questions/{question_id}/answers
   -returns all available answers for a question
@@ -130,6 +130,13 @@ DELETE /quizzes/{quiz_id}/questions/{question_id}/answers/{answer_id}
 
 ## Setup/Installation Requirements
 
+#### Required Versions
+
+* _Ruby @ 2.6.5_
+* _Rails @ 5.2.4_
+
+#### Installation
+
 * _Clone to local machine_
 * _Verify that you are running postgresql locally_
 * _In project root folder:_
@@ -150,7 +157,7 @@ _Any issues or concerns, please email liam@liamkenna.com_
 
 ## Technologies Used
 
-_Ruby, Rails_
+_Ruby, Rails, PostgreSQL_
 
 ### License
 
